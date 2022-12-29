@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="myDIV" class="header">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="myInput">
+            <span onclick="newElement()" class="addBtn">Add</span>
+          </div>
+          <ul id="myUL"></ul>
+    </div>
+    <script>
+        // variables and datatypes
+        // const let var
+        // const name="sabari";
+        // var age = 23;
+        // let country="india";
+        // console.log(name);
+        // console.log(age);
+        // console.log(country);
+
+        //objects
+        //var details = {name:"sabari",age:23,country:"india"}
+        //console.log(details);
+
+        //arrays
+        // let arr=["sabari",23,"India",{name:"sabari",age:23,country:"india"}]
+        // console.log(arr[3]);
+
+        //objects and arrays destructuring
+        // var details = {name:"sabari",age:23,country:"india"}
+        // const {name, age} = details;
+        // console.log(name, age);
+
+        // var [a,b,c,d] = arr;
+        // console.log(c);
+
+        // var price1={apple:50,orange:40}
+        // var price2={banana:10,mango:30, ...price1}
+        // console.log(price2);
+        // var {orange, ...price2}=price2;
+        // console.log(price2);
+
+        //looping
+        // const avengers=["Iron Man","Thor","Hulk"]
+
+        //we can't return in forEach loop, forEach is faster than map
+        // avengers.forEach((hero,index)=>{
+        //     console.log(hero,index);
+        // });
+        
+        //we can return in map loop
+        // avengers.map((hero,index)=>{
+        //     console.log(hero,index);
+        // });
+
+        // const heros=avengers.map((hero,index)=>{
+        //     return hero;
+        // });
+        // console.log(heros);
+
+        //for-of loop
+        // for(const superHero of avengers){
+        //     console.log(superHero);
+        // }
+
+        //for-in loop
+        // const obj = {name:"sabari",age:23,gender:"Male"};
+        
+        // for(const key in obj){
+        //     const value =obj[key];
+        //     console.log(value);
+        // }
+    </script>
+    <script>
+        const marks ={
+            Tamil : 100,
+            English : 100,
+            Maths : 34,
+            Science : 100,
+            SocialScience :100
+        }
+        const {Tamil,English,Maths,Science,SocialScience} = marks;
+
+        // for(const key in marks){
+        //     mark=marks[key];
+        // }
+
+        var total = Tamil + English + Maths + Science + SocialScience;
+
+        if(total>=451 && total<=500)
+        {
+            if(Tamil>=35 && English>=35 && Maths>=35 && Science >=35 && SocialScience>=35)
+            {
+                console.log("A Grade");
+            }
+            else{
+                console.log("Fail");
+            }
+        }else if (total>=401 && total<=450){
+            if(Tamil>=35 && English>=35 && Maths>=35 && Science >=35 && SocialScience>=35)
+            {
+                console.log("B Grade");
+            }
+            else{
+                console.log("Fail");
+            }
+        }else if (total>=351 && total<=400){
+            if(Tamil>=35 && English>=35 && Maths>=35 && Science >=35 && SocialScience>=35)
+            {
+                console.log("C Grade");
+            }
+            else{
+                console.log("Fail");
+            }
+        }else if (total>=301 && total<=350){
+            if(Tamil>=35 && English>=35 && Maths>=35 && Science >=35 && SocialScience>=35)
+            {
+                console.log("D Grade");
+            }
+            else{
+                console.log("Fail");
+            }
+        }else if (total>=251 && total<=300){
+            if(Tamil>=35 && English>=35 && Maths>=35 && Science >=35 && SocialScience>=35)
+            {
+                console.log("E Grade");
+            }
+            else{
+                console.log("Fail");
+            }
+        }else {
+            console.log("Fail");
+        }
+    </script>
+    <script>
+        var deleteBtn = document.createElement("span");
+        var editBtn = document.createElement("span");
+        var text = document.createTextNode("Edit");
+        var txt = document.createTextNode("\u00D7");
+        
+        editBtn.className="edit";
+        deleteBtn.className = "close";
+        editBtn.appendChild(text);
+        deleteBtn.appendChild(txt);
+
+        var edit = document.getElementsByClassName("edit");
+        var close = document.getElementsByClassName("close");
+        var i;
+        for(i=0;i<edit.length;i++){
+            edit[i].onclick = function(){
+                var div = this.parentElement;
+                div.style.display = "none";
+            }
+        }
+        for (i = 0; i < close.length; i++) {
+            close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+            }
+        }
+
+        function newElement() {
+            var li = document.createElement("li");
+            var inputValue = document.getElementById("myInput").value;
+            var t = document.createTextNode(inputValue);
+            li.appendChild(t);
+            if (inputValue === '') {
+                alert("You must write something!");
+            } else {
+                document.getElementById("myUL").appendChild(li);
+            }
+            document.getElementById("myInput").value = "";
+
+            var span = document.createElement("SPAN");
+            var txt = document.createTextNode("\u00D7");
+            var editBtn = document.createElement("span");
+            var text = document.createTextNode("Edit");
+
+            editBtn.className="edit";
+            editBtn.appendChild(text);
+            li.appendChild(editBtn);
+            
+            span.className = "close";
+            span.appendChild(txt);
+            li.appendChild(span);
+
+            for(i = 0; i < edit.length; i++){
+                edit[i].onclick = function(){
+                // var div = this.parentElement;
+                // var inputItem = document.createElement("input");
+                // inputItem.classList.add("editInput");
+                // inputItem.type="text";
+                // inputItem.value = edit[i];
+                }
+            }
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                var div = this.parentElement;
+                div.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
